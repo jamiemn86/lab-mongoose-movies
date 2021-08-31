@@ -14,6 +14,19 @@ celebritiesRouter.get('/celebrities', (req, res, next) => {
     });
 });
 
+// Handle GET for /celebrities/:id
+celebritiesRouter.get('/celebrities/:id', (req, res, next) => {
+  const id = req.params.id;
+  console.log(id);
+  Celebrity.findById(id)
+    .then((celebrities) => {
+      res.render('celebrities/show', { celebrities });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 // celebritiesRouter.get('/celebrities', (req, res, next) => {
 //   res.render('index');
 // });
