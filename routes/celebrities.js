@@ -14,6 +14,11 @@ celebritiesRouter.get('/celebrities', (req, res, next) => {
     });
 });
 
+// celebrities create GET route
+celebritiesRouter.get('/celebrities/create', (req, res, next) => {
+  res.render('celebrities/create');
+});
+
 // Handle GET for /celebrities/:id
 celebritiesRouter.get('/celebrities/:id', (req, res, next) => {
   const id = req.params.id;
@@ -25,11 +30,6 @@ celebritiesRouter.get('/celebrities/:id', (req, res, next) => {
     .catch((error) => {
       next(error);
     });
-});
-
-// celebrities create GET route
-celebritiesRouter.get('/celebrities/create', (req, res, next) => {
-  res.render('celebrities/create');
 });
 
 // celebritiesRouter.get('/celebrities', (req, res, next) => {
