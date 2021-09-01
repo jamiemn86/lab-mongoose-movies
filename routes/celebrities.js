@@ -53,6 +53,17 @@ celebritiesRouter.get('/celebrities/:id', (req, res, next) => {
     });
 });
 
+celebritiesRouter.post('/celebrities/:id/delete', (request, response, next) => {
+  const id = request.params.id;
+  Celebrity.findByIdAndRemove(id)
+    .then(() => {
+      response.redirect('/celebrities');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 // celebritiesRouter.get('/celebrities', (req, res, next) => {
 //   res.render('index');
 // });
