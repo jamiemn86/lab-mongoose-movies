@@ -19,6 +19,27 @@ celebritiesRouter.get('/celebrities/create', (req, res, next) => {
   res.render('celebrities/create');
 });
 
+// celebrities POST route
+celebritiesRouter.post('/celebrities', (req, res, next) => {
+  const name = req.body.name;
+  const occupation = req.body.occupation;
+  const catchPhrase = req.body.catchphrase;
+  const celebrity = new Celebrity({
+    name,
+    occupation,
+    catchPhrase
+  });
+
+  celebrity
+    .save()
+    .then((celebrity) => {
+      res.redirect('/celebrities');
+    })
+    .catch((error) => {
+      next('/celebrities/create');
+    });
+});
+
 // Handle GET for /celebrities/:id
 celebritiesRouter.get('/celebrities/:id', (req, res, next) => {
   const id = req.params.id;
