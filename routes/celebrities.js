@@ -27,6 +27,11 @@ celebritiesRouter.get('/celebrities/:id', (req, res, next) => {
     });
 });
 
+// celebrities create GET route
+celebritiesRouter.get('/celebrities/create', (req, res, next) => {
+  res.render('celebrities/create');
+});
+
 // celebritiesRouter.get('/celebrities', (req, res, next) => {
 //   res.render('index');
 // });
